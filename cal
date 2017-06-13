@@ -1,0 +1,129 @@
+<html>
+<head>
+    <style>
+    button
+        {
+            width: 50px;
+            height:50px;  
+            color:  black;
+            background-color: aliceblue;
+        }
+        
+        
+        
+    </style>
+    </head>
+<body bgcolor="blue">
+    
+    <center><h1>Calculator</h1></center>
+    <form name="form1">
+    <table border="2" align="center" bgcolor="aliceblue">
+    <tr>
+        <center><input type= "text" id="text" style="width:250px; height:50px;"/><br><br></center></tr>
+    <tr>
+        <td><button value="1">1</button></td>
+        <td><button value="2">2</button></td>
+        <td><button value="3">3</button></td>
+        <td><button value="+">+</button></td>
+        <td><button value="x^2">x^2</button><br></td>
+    </tr>
+    <tr>
+        <td><button value="4">4</button></td>
+        <td><button value="5">5</button></td>
+        <td><button value="6">6</button></td>
+        <td><button value="-">-</button></td>
+        <td><button value="x^3">x^3</button><br></td>
+        </tr>
+    <tr>
+        <td><button value="7">7</button></td>
+        <td><button value="8">8</button></td>
+        <td><button value="9">9</button></td>
+        <td><button value="*">x</button></td>
+         <td><button value="sqrt">sqrt</button><br></td></tr>
+    <tr>
+        <td><button value=".">.</button></td>
+        <td><button value="0">0</button></td>
+        <td><button value="%">%</button> </td>
+        <td><button value="/">/</button></td>
+    </tr>
+    <tr>
+        <td><button value="(">(</button></td>
+        <td><button value="=" onclick="fun();">=</button></td>
+        <td><button value=")">)</button></td>
+        <td><input type="reset" value="C" style="height:50px; width:50px; background-color:aliceblue"/></td>
+        </tr>
+        </table>
+        
+    </form>
+    </body>
+    <script>
+        
+    var a = document.getElementsByTagName('button');
+        for(i=0;i<a.length;i++)
+        {
+            a[i].onclick=function(){
+                if(this.value=='='){
+                    var b = document.getElementById('text').value;
+                    
+                    if(b.indexOf('+')!=-1){
+                    var res = b.split('+');
+                    var add = parseInt(res[0]) + parseInt(res[1]);
+                    document.getElementById('text').value=add;
+                    return false;
+                    }
+                    if(b.indexOf('-')!=-1){
+                    var res = b.split('-');
+                    var sub = parseInt(res[0]) - parseInt(res[1]);
+                    document.getElementById('text').value=sub;
+                    return false;
+                    }
+                    if(b.indexOf('*')!=-1){
+                    var res = b.split('*');
+                    var mul= parseInt(res[0]) * parseInt(res[1]);
+                    document.getElementById('text').value=mul;
+                    return false;
+                    }
+                    if(b.indexOf('/')!=-1){
+                    var res = b.split('/');
+                    var div = parseInt(res[0]) / parseInt(res[1]);
+                    document.getElementById('text').value=div;
+                    return false;
+                    }
+                    if(b.indexOf('x^2')!=-1){
+                    var res = b.split('x^2');
+                    var sqr = parseInt(res[0]) * parseInt(res[0]);
+                    document.getElementById('text').value=sqr;
+                    return false;
+                    }
+                    if(b.indexOf('x^3')!=-1){
+                    var res = b.split('x^3');
+                    var cub = parseInt(res[0]) * parseInt(res[0]) * parseInt(res[0]);
+                    document.getElementById('text').value=cub;
+                    return false;
+                    }
+                    
+                    if(b.indexOf('%')!=-1){                   
+                    var res = b.split('%');
+                    var per = parseInt(res[0] % parseInt(res[1]));
+                    document.getElementById('text').value=per;
+                    return false;
+                    }
+                    
+                    if(b.indexOf('sqrt')!=-1){
+                    var res = b.split('sqrt');
+                    var sqrt = parseInt(Math.sqrt(res[0]));
+                    document.getElementById('text').value=sqrt;
+                    return false;
+                    }
+             }
+                
+        
+                else{
+                document.getElementById('text').value = document.getElementById('text').value + ''+ this.value;
+                return false;
+                }
+            }
+        }
+    </script>
+    
+</html>
